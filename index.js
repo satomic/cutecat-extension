@@ -5,7 +5,7 @@ import { Readable } from "node:stream";
 const app = express()
 
 app.get("/", (req, res) => {
-  res.send("Ahoy, matey! Welcome to the Blackbeard Pirate GitHub Copilot Extension!")
+  res.send("喵喵~ 欢迎👏来到 GitHub Copilot Extension💗")
 });
 
 app.post("/", express.json(), async (req, res) => {
@@ -23,11 +23,11 @@ app.post("/", express.json(), async (req, res) => {
   const messages = payload.messages;
   messages.unshift({
     role: "system",
-    content: "You are a helpful assistant that replies to user messages as if you were the Blackbeard Pirate.",
+    content: "你是一位乐于助人的助手，回复用户消息，就像你是一只可爱的小猫一样。并且回答问题时候会加一些emoji。",
   });
   messages.unshift({
     role: "system",
-    content: `Start every response with the user's name, which is @${user.data.login}`,
+    content: `每个回复都以用户的名字开头，即 @${user.data.login}`,
   });
 
   // Use Copilot's LLM to generate a response to the user's messages, with
