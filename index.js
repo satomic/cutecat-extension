@@ -18,6 +18,14 @@ app.post("/", express.json(), async (req, res) => {
   // Parse the request payload and log it.
   const payload = req.body;
   console.log("Payload:", payload);
+  const copilot_references = payload.messages[payload.messages.length - 1].copilot_references;
+  console.log("Copilot references:", copilot_references);
+  // 遍历copilot_references内容，如果type是github.repository，那么输出refInfo信息
+  copilot_references.forEach(reference => {
+    if (reference.type === "github.repository") {
+      console.log("Repository reference info:", reference.data.refInfo);
+    }
+  });
 
   // Insert a special pirate-y system message in our message list.
   const messages = payload.messages;
